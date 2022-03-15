@@ -1,0 +1,19 @@
+server:
+  port: 9191
+spring:
+  application:
+    name: POC-API-Gateway
+  cloud:
+    gateway:
+      routes:
+      - id: poc-spring-restful-app
+        uri: lb://poc-spring-restful-service/**
+        predicates:
+        - Path=/**
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
